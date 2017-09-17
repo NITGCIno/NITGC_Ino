@@ -58,15 +58,19 @@ and open the template in the editor.
     <template id="school.html">
   <ons-page>
     <ons-toolbar>
-      <div class="left">
         <ons-toolbar-button onclick="fn.open()">
           <ons-icon icon="md-menu"></ons-icon>
         </ons-toolbar-button>
+      <div class="left">
       </div>
       <div class="center">
-        Main
+        Go to School
       </div>
     </ons-toolbar>
+ 
+      <ons-pull-hook id="pull-hook">
+            Pull to refresh
+        </ons-pull-hook>
     <p style="text-align: center; opacity: 0.6; padding-top: 20px;">
       Go to school
     </p>
@@ -82,9 +86,12 @@ and open the template in the editor.
         </ons-toolbar-button>
       </div>
       <div class="center">
-        Main
+        Go home
       </div>
     </ons-toolbar>
+      <ons-pull-hook id="pull-hook">
+            Pull to refresh
+        </ons-pull-hook>
     <p style="text-align: center; opacity: 0.6; padding-top: 20px;">
       go home
     </p>
@@ -125,17 +132,43 @@ and open the template in the editor.
     <script>
         window.fn = {};
 
-window.fn.open = function() {
-  var menu = document.getElementById('menu');
-  menu.open();
-};
+        window.fn.open = function() {
+            var menu = document.getElementById('menu');
+            menu.open();
+        };
 
-window.fn.load = function(page) {
-  var content = document.getElementById('content');
-  var menu = document.getElementById('menu');
-  content.load(page)
-    .then(menu.close.bind(menu));
-};
+        window.fn.load = function(page) {
+            var content = document.getElementById('content');
+            var menu = document.getElementById('menu');
+            content.load(page)
+                    .then(menu.close.bind(menu));
+        };
+        
+        ons.ready(function() {
+        var pullHook = document.getElementById('pull-hook');
+
+        pullHook.addEventListener('changestate', function(event) {
+        var message = '';
+
+        switch (event.state) {
+        case 'initial':
+            message = 'Pull to refresh';
+            break;
+        case 'preaction':
+            message = 'Release';
+            break;
+        case 'action':
+            message = 'Loading...';
+            break;
+    }
+
+    pullHook.innerHTML = message;
+  });
+
+    pullHook.onAction = function(done) {
+    setTimeout(done, 1000);
+  };
+});
     </script>
     </body>
 </html>
