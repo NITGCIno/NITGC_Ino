@@ -46,7 +46,7 @@ and open the template in the editor.
         </ons-toolbar-button>
       </div>
       <div class="center">
-        Main
+        Latist Info
       </div>
     </ons-toolbar>
     <p style="text-align: center; opacity: 0.6; padding-top: 20px;">
@@ -67,13 +67,38 @@ and open the template in the editor.
         Go to School
       </div>
     </ons-toolbar>
- 
-      <ons-pull-hook id="pull-hook">
+        <ons-pull-hook id="pull-hook">
             Pull to refresh
         </ons-pull-hook>
     <p style="text-align: center; opacity: 0.6; padding-top: 20px;">
       Go to school
     </p>
+    <script>
+        ons.ready(function() {
+            var pullHook = document.getElementById('pull-hook');
+
+            pullHook.addEventListener('changestate', function(event) {
+                var message = '';
+
+                switch (event.state) {
+                    case 'initial':
+                        message = 'Pull to refresh';
+                        break;
+                    case 'preaction':
+                        message = 'Release';
+                        break;
+                    case 'action':
+                        message = 'Loading...';
+                        break;
+                }
+
+            pullHook.innerHTML = message;
+            });
+
+            pullHook.onAction = function(done) {
+                setTimeout(done, 1000);
+            };
+        });</script>
   </ons-page>
 </template>
     
@@ -95,6 +120,33 @@ and open the template in the editor.
     <p style="text-align: center; opacity: 0.6; padding-top: 20px;">
       go home
     </p>
+    <script>
+        ons.ready(function() {
+            var pullHook = document.getElementById('pull-hook');
+
+            pullHook.addEventListener('changestate', function(event) {
+                var message = '';
+
+                switch (event.state) {
+                    case 'initial':
+                        message = 'Pull to refresh';
+                        break;
+                    case 'preaction':
+                        message = 'Release';
+                        break;
+                    case 'action':
+                        message = 'Loading...';
+                        break;
+                }
+
+            pullHook.innerHTML = message;
+            });
+
+            pullHook.onAction = function(done) {
+                setTimeout(done, 1000);
+            };
+        });
+    </script>
   </ons-page>
 </template>
     
@@ -130,7 +182,8 @@ and open the template in the editor.
     
     
     <script>
-        window.fn = {};
+
+    window.fn = {};
 
         window.fn.open = function() {
             var menu = document.getElementById('menu');
@@ -143,32 +196,7 @@ and open the template in the editor.
             content.load(page)
                     .then(menu.close.bind(menu));
         };
-        
-        ons.ready(function() {
-        var pullHook = document.getElementById('pull-hook');
-
-        pullHook.addEventListener('changestate', function(event) {
-        var message = '';
-
-        switch (event.state) {
-        case 'initial':
-            message = 'Pull to refresh';
-            break;
-        case 'preaction':
-            message = 'Release';
-            break;
-        case 'action':
-            message = 'Loading...';
-            break;
-    }
-
-    pullHook.innerHTML = message;
-  });
-
-    pullHook.onAction = function(done) {
-    setTimeout(done, 1000);
-  };
-});
+       
     </script>
     </body>
 </html>
