@@ -11,230 +11,192 @@ and open the template in the editor.
         <script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
     </head>
     <body>
-        <ons-navigator id="appNavigator" swipeable swipe-target-width="80px">
+        <ons-splitter>
+        <ons-splitter-side id="menu" side="left" width="220px" collapse swipeable>
+            <ons-page>
+                <ons-list>
+                    <ons-list-item onclick="fn.load('home.html')" tappable>
+                        Home
+                    </ons-list-item>
+                    <ons-list-item onclick="fn.load('school.html')" tappable>
+                        Go to School
+                    </ons-list-item>
+                    <ons-list-item onclick="fn.load('myhome.html')" tappable>
+                        Go Home
+                    </ons-list-item>
+                    <ons-list-item onclick="fn.load('settings.html')" tappable>
+                        Settings
+                    </ons-list-item>
+                    <ons-list-item onclick="fn.load('about.html')" tappable>
+                        About
+                    </ons-list-item>
+                    
+                </ons-list>
+            </ons-page>
+        </ons-splitter-side>
+        <ons-splitter-content id="content" page="home.html"></ons-splitter-content>
+        </ons-splitter>
+
+<template id="home.html">
   <ons-page>
-    <ons-splitter id="appSplitter">
-      <ons-splitter-side id="sidemenu" page="sidemenu.html" swipeable side="left" collapse="" width="260px"></ons-splitter-side>
-      <ons-splitter-content>
-        <ons-page id="tabbar-page">
-          <ons-toolbar>
-            <div class="center">New Notifications</div>
-            <div class="left">
-              <ons-toolbar-button onclick="fn.toggleMenu()">
-                <ons-icon icon="ion-navicon, material:md-menu"></ons-icon>
-              </ons-toolbar-button>
-            </div>
-          </ons-toolbar>
-          <ons-pull-hook id="pull-hook">
-            Pull to refresh
-          </ons-pull-hook>
-        </ons-page>
-      </ons-splitter-content>
-    </ons-splitter>
-  </ons-page>
-</ons-navigator>
-
-<template id="sidemenu.html">
-  <ons-page>
-    <ons-list-title>Access</ons-list-title>
-    <ons-list>
-      <ons-list-item onclick="fn.load('home.html')" tappable>
-        <div class="left">
-          <ons-icon fixed-width class="list-item__icon" icon="ion-home, material:md-home"></ons-icon>
-        </div>
-        <div class="center">
-          Home
-        </div>
-        <div class="right">
-        </div>
-      </ons-list-item>
-      <ons-list-item  onclick="fn.load('school.html')" tappable>
-        <div class="left">
-          <ons-icon fixed-width class="list-item__icon" icon="fa-graduation-cap, material:md-graduation-cap"></ons-icon>
-        </div>
-        <div class="center">
-          Go to School
-        </div>
-        <div class="right">
-        </div>
-      </ons-list-item>
-      <ons-list-item onclick="fn.load('bed.html')" tappable>
-        <div class="left">
-          <ons-icon fixed-width class="list-item__icon" icon="fa-bed, material: md-bed"></ons-icon>
-        </div>
-        <div class="center">
-          Go Home
-        </div>      
-      </ons-list-item>
-    </ons-list>
-
-    <ons-list-title style="margin-top: 10px">Links</ons-list-title>
-    <ons-list>
-      <ons-list-item onclick="fn.loadLink('https://onsen.io/v2/docs/guide/js/')">
-        <div class="left">
-          <ons-icon fixed-width class="list-item__icon" icon="ion-document-text"></ons-icon>
-        </div>
-        <div class="center">
-          Docs
-        </div>
-        <div class="right">
-          <ons-icon icon="fa-external-link"></ons-icon>
-        </div>
-      </ons-list-item>
-      <ons-list-item onclick="fn.loadLink('https://github.com/NITGCIno/NITGC_Ino')">
-        <div class="left">
-          <ons-icon fixed-width class="list-item__icon" icon="ion-social-github"></ons-icon>
-        </div>
-        <div class="center">
-          GitHub
-        </div>
-        <div class="right">
-          <ons-icon icon="fa-external-link"></ons-icon>
-        </div>
-      </ons-list-item>
-      <ons-list-item onclick="fn.loadLink('https://twitter.com/NITGC_Ino')">
-        <div class="left">
-          <ons-icon fixed-width class="list-item__icon" icon="ion-social-twitter"></ons-icon>
-        </div>
-        <div class="center">
-          Twitter
-        </div>
-        <div class="right">
-          <ons-icon icon="fa-external-link"></ons-icon>
-        </div>
-      </ons-list-item>
-    </ons-list>
-    
-    <ons-list-title style="margin-top: 10px"></ons-list-title>
-    <ons-list>
-      <ons-list-item onclick="fn.load('settings.html')" tappable>
-        <div class="left">
-          <ons-icon fixed-width class="list-item__icon" icon="fa-cogs, material: md-cogs"></ons-icon>
-        </div>
-        <div class="center">
-          Settings
-        </div>
-      </ons-list-item>
-
-    <style>
-      .profile-pic {
-        width: 200px;
-        background-color: #fff;
-        margin: 20px auto 10px;
-        border: 1px solid #999;
-        border-radius: 4px;
-      }
-
-      .profile-pic > img {
-        display: block;
-        max-width: 100%;
-      }
-
-      ons-list-item {
-        color: #444;
-      }
-    </style>
+    <ons-toolbar>
+      <div class="left">
+        <ons-toolbar-button onclick="fn.open()">
+          <ons-icon icon="md-menu"></ons-icon>
+        </ons-toolbar-button>
+      </div>
+      <div class="center">
+        Latist Info
+      </div>
+    </ons-toolbar>
+    <p style="text-align: center; opacity: 0.6; padding-top: 20px;">
+      Swipe right to open the menu!
+    </p>
   </ons-page>
 </template>
 
-    <template id="home.html">
-        <ons-page>
-            <h1>main page</h1>
-        </ons-page>
-    </template>
-    
     <template id="school.html">
-        <ons-page>
-            <h1>Go to the school</h1>
-        </ons-page>
-    </template>
+  <ons-page>
+    <ons-toolbar>
+        <ons-toolbar-button onclick="fn.open()">
+          <ons-icon icon="md-menu"></ons-icon>
+        </ons-toolbar-button>
+      <div class="left">
+      </div>
+      <div class="center">
+        Go to School
+      </div>
+    </ons-toolbar>
+        <ons-pull-hook id="pull-hook">
+            Pull to refresh
+        </ons-pull-hook>
+    <p style="text-align: center; opacity: 0.6; padding-top: 20px;">
+      Go to school
+    </p>
+    <script>
+        ons.ready(function() {
+            var pullHook = document.getElementById('pull-hook');
+
+            pullHook.addEventListener('changestate', function(event) {
+                var message = '';
+
+                switch (event.state) {
+                    case 'initial':
+                        message = 'Pull to refresh';
+                        break;
+                    case 'preaction':
+                        message = 'Release';
+                        break;
+                    case 'action':
+                        message = 'Loading...';
+                        break;
+                }
+
+            pullHook.innerHTML = message;
+            });
+
+            pullHook.onAction = function(done) {
+                setTimeout(done, 1000);
+            };
+        });</script>
+  </ons-page>
+</template>
     
-    <template id="bed.html">
-        <ons-page>
-            <h1>Go Home</h1>
-        </ons-page>
-    </template>
+    <template id="myhome.html">
+  <ons-page>
+    <ons-toolbar>
+      <div class="left">
+        <ons-toolbar-button onclick="fn.open()">
+          <ons-icon icon="md-menu"></ons-icon>
+        </ons-toolbar-button>
+      </div>
+      <div class="center">
+        Go home
+      </div>
+    </ons-toolbar>
+      <ons-pull-hook id="pull-hook">
+            Pull to refresh
+        </ons-pull-hook>
+    <p style="text-align: center; opacity: 0.6; padding-top: 20px;">
+      go home
+    </p>
+    <script>
+        ons.ready(function() {
+            var pullHook = document.getElementById('pull-hook');
 
-    <template id="settings.html">
-        <ons-page>
-            <h1>settings</h1>
-        </ons-page>
-    </template>    
+            pullHook.addEventListener('changestate', function(event) {
+                var message = '';
 
+                switch (event.state) {
+                    case 'initial':
+                        message = 'Pull to refresh';
+                        break;
+                    case 'preaction':
+                        message = 'Release';
+                        break;
+                    case 'action':
+                        message = 'Loading...';
+                        break;
+                }
 
+            pullHook.innerHTML = message;
+            });
 
-<style>
-  ons-splitter-side[animation=overlay] {
-    border-left: 1px solid #bbb;
-  }
-</style>
-<script>
+            pullHook.onAction = function(done) {
+                setTimeout(done, 1000);
+            };
+        });
+    </script>
+  </ons-page>
+</template>
+    
+<template id="settings.html">
+  <ons-page>
+    <ons-toolbar>
+      <div class="left">
+        <ons-toolbar-button onclick="fn.open()">
+          <ons-icon icon="md-menu"></ons-icon>
+        </ons-toolbar-button>
+      </div>
+      <div class="center">
+        Settings
+      </div>
+    </ons-toolbar>
+  </ons-page>
+</template>
+
+<template id="about.html">
+  <ons-page>
+    <ons-toolbar>
+      <div class="left">
+        <ons-toolbar-button onclick="fn.open()">
+          <ons-icon icon="md-menu"></ons-icon>
+        </ons-toolbar-button>
+      </div>
+      <div class="center">
+        About
+      </div>
+    </ons-toolbar>
+  </ons-page>
+</template>
+    
+    
+    <script>
+
     window.fn = {};
 
-ons.ready(function() {
-  var pullHook = document.getElementById('pull-hook');
+        window.fn.open = function() {
+            var menu = document.getElementById('menu');
+            menu.open();
+        };
 
-  pullHook.addEventListener('changestate', function(event) {
-    var message = '';
-
-    switch (event.state) {
-      case 'initial':
-        message = 'Pull to refresh';
-        break;
-      case 'preaction':
-        message = 'Release';
-        break;
-      case 'action':
-        message = 'Loading...';
-        break;
-    }
-
-    pullHook.innerHTML = message;
-  });
-
-  pullHook.onAction = function(done) {
-    setTimeout(done, 1000);
-  };
-});
-
-window.fn.toggleMenu = function () {
-  document.getElementById('appSplitter').left.toggle();
-};
-
-window.fn.open = function() {
-  var menu = document.getElementById('menu');
-  menu.open();
-};
-
-window.fn.load = function(page) {
-  var content = document.getElementById('content');
-  var menu = document.getElementById('menu');
-  content.load(page)
-    .then(menu.close.bind(menu));
-};
-
-window.fn.loadLink = function (url) {
-  window.open(url, '_blank');
-};
-
-window.fn.pushPage = function (page, anim) {
-  if (anim) {
-    document.getElementById('appNavigator').pushPage(page.id, { data: { title: page.title }, animation: anim });
-  } else {
-    document.getElementById('appNavigator').pushPage(page.id, { data: { title: page.title } });
-  }
-};
-
-ons.ready(function () {
-  const sidemenu = document.getElementById('appSplitter');
-  ons.platform.isAndroid() ? sidemenu.right.setAttribute('animation', 'overlay') : sidemenu.right.setAttribute('animation', 'reveal');
-
-  document.querySelector('#tabbar-page').addEventListener('postchange', function(event) {
-    if (event.target.matches('#appTabbar')) {
-      event.currentTarget.querySelector('ons-toolbar .center').innerHTML = event.tabItem.getAttribute('label');
-    }
-  });
-});
-</script>
-</body>
+        window.fn.load = function(page) {
+            var content = document.getElementById('content');
+            var menu = document.getElementById('menu');
+            content.load(page)
+                    .then(menu.close.bind(menu));
+        };
+       
+    </script>
+    </body>
 </html>
