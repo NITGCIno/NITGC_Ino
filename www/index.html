@@ -89,32 +89,7 @@ and open the template in the editor.
     <p style="text-align: center; opacity: 0.6; padding-top: 20px;">
       Go to school
     </p>
-    <script>
-        ons.ready(function() {
-            var pullHook = document.getElementById('pull-hook');
-
-            pullHook.addEventListener('changestate', function(event) {
-                var message = '';
-
-                switch (event.state) {
-                    case 'initial':
-                        message = 'Pull to refresh';
-                        break;
-                    case 'preaction':
-                        message = 'Release';
-                        break;
-                    case 'action':
-                        message = 'Loading...';
-                        break;
-                }
-
-            pullHook.innerHTML = message;
-            });
-
-            pullHook.onAction = function(done) {
-                setTimeout(done, 1000);
-            };
-        });</script>
+    <script src="pulldown.js"></script>
   </ons-page>
 </template>
     
@@ -136,33 +111,7 @@ and open the template in the editor.
     <p style="text-align: center; opacity: 0.6; padding-top: 20px;">
       go home
     </p>
-    <script>
-        ons.ready(function() {
-            var pullHook = document.getElementById('pull-hook');
-
-            pullHook.addEventListener('changestate', function(event) {
-                var message = '';
-
-                switch (event.state) {
-                    case 'initial':
-                        message = 'Pull to refresh';
-                        break;
-                    case 'preaction':
-                        message = 'Release';
-                        break;
-                    case 'action':
-                        message = 'Loading...';
-                        break;
-                }
-
-            pullHook.innerHTML = message;
-            });
-
-            pullHook.onAction = function(done) {
-                setTimeout(done, 1000);
-            };
-        });
-    </script>
+    <script src="pulldown.js"></script>
   </ons-page>
 </template>
     
