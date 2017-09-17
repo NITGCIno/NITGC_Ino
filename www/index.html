@@ -38,7 +38,7 @@ and open the template in the editor.
   <ons-page>
     <ons-list-title>Access</ons-list-title>
     <ons-list>
-      <ons-list-item onclick="fn.loadView(0)">
+      <ons-list-item onclick="fn.load('home.html')" tappable>
         <div class="left">
           <ons-icon fixed-width class="list-item__icon" icon="ion-home, material:md-home"></ons-icon>
         </div>
@@ -48,7 +48,7 @@ and open the template in the editor.
         <div class="right">
         </div>
       </ons-list-item>
-      <ons-list-item onclick="fn.loadView(1)">
+      <ons-list-item  onclick="fn.load('school.html')" tappable>
         <div class="left">
           <ons-icon fixed-width class="list-item__icon" icon="fa-graduation-cap, material:md-graduation-cap"></ons-icon>
         </div>
@@ -58,7 +58,7 @@ and open the template in the editor.
         <div class="right">
         </div>
       </ons-list-item>
-      <ons-list-item onclick="fn.loadView(2)">
+      <ons-list-item onclick="fn.load('bed.html')" tappable>
         <div class="left">
           <ons-icon fixed-width class="list-item__icon" icon="fa-bed, material: md-bed"></ons-icon>
         </div>
@@ -107,7 +107,7 @@ and open the template in the editor.
     
     <ons-list-title style="margin-top: 10px"></ons-list-title>
     <ons-list>
-      <ons-list-item onclick="fn.loadView(3)">
+      <ons-list-item onclick="fn.load('settings.html')" tappable>
         <div class="left">
           <ons-icon fixed-width class="list-item__icon" icon="fa-cogs, material: md-cogs"></ons-icon>
         </div>
@@ -136,6 +136,30 @@ and open the template in the editor.
     </style>
   </ons-page>
 </template>
+
+    <template id="home.html">
+        <ons-page>
+            <h1>main page</h1>
+        </ons-page>
+    </template>
+    
+    <template id="school.html">
+        <ons-page>
+            <h1>Go to the school</h1>
+        </ons-page>
+    </template>
+    
+    <template id="bed.html">
+        <ons-page>
+            <h1>Go Home</h1>
+        </ons-page>
+    </template>
+
+    <template id="settings.html">
+        <ons-page>
+            <h1>settings</h1>
+        </ons-page>
+    </template>    
 
 
 
@@ -177,9 +201,16 @@ window.fn.toggleMenu = function () {
   document.getElementById('appSplitter').left.toggle();
 };
 
-window.fn.loadView = function (index) {
-  document.getElementById('appTabbar').setActiveTab(index);
-  document.getElementById('sidemenu').close();
+window.fn.open = function() {
+  var menu = document.getElementById('menu');
+  menu.open();
+};
+
+window.fn.load = function(page) {
+  var content = document.getElementById('content');
+  var menu = document.getElementById('menu');
+  content.load(page)
+    .then(menu.close.bind(menu));
 };
 
 window.fn.loadLink = function (url) {
