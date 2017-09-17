@@ -6,6 +6,7 @@ and open the template in the editor.
 -->
 <html>
     <head>
+        <meta charset="UTF-8">
         <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsenui.css">
         <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsen-css-components.min.css">
         <script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
@@ -177,6 +178,62 @@ and open the template in the editor.
         About
       </div>
     </ons-toolbar>
+      
+    <ons-list>
+    <ons-list-item tappable onclick="fn.loadLink('https://twitter.com/NITGC_Ino')">
+        <div id="left">
+            <ons-icon icon="fa-twitter, material: md-twitter" class="list-item__icon"></ons-icon>
+        </div>
+        Twitter
+    </ons-list-item>
+    <ons-list-item tappable onclick="fn.loadLink('https://github.com/NITGCIno/NITGC_Ino')">
+            <div id="left">
+            <ons-icon icon="fa-github, material: md-github" class="list-item__icon"></ons-icon>
+        </div>
+        GitHub
+    </ons-list-item>
+    <ons-list-item>
+        交通情報API
+        <div id="right">
+        <!-- Credit of docomo Developer support API -->
+        <a href='https://dev.smt.docomo.ne.jp'>
+            <img src='https://devsite-pro.s3.amazonaws.com/contents_file/credit.png' title='API powered by docomo Developer support' alt='API powered by docomo Developer support' width='230' height='62' border='0' style='margin:15px 15px 15px 15px'>
+        </a>
+        <!-- Credit of docomo Developer support API -->
+        </div>
+    </ons-list-item>
+        <ons-list-header>developers</ons-list-header>
+        <ons-list>
+                    <ons-list-item tappable onclick="fn.loadLink('https://twitter.com/kaltzfeine')">
+                        <div id="left">
+                        <ons-icon icon="fa-desktop, material: md-desktop" class="list-item__icon"></ons-icon>
+                        </div>
+                        Enginner's Twitter
+                    </ons-list-item>
+            
+                    <ons-list-item tappable onclick="fn.loadLink('https://twitter.com/YuKiChannel0710')">
+                    <div id="left">
+                    <ons-icon icon="fa-paint-brush, material: md-paint-brush" class="list-item__icon"></ons-icon>
+                    </div>
+                    Designer's Twitter
+                </ons-list-item>
+            <ons-list-item tappable onclick="fn.loadLink('https://www.youtube.com/channel/UCFZQdO9tlnMjELI_g1-d4EA?view_as=subscriber')">
+                    <div id="left">
+                    <ons-icon icon="fa-youtube-play, material: md-youtube-play" class="list-item__icon"></ons-icon>
+                    </div>
+                    Designer's YouTube Channel
+                </ons-list-item>
+            <ons-list-header>
+                Copyright
+            </ons-list-header>
+            <pre>Copyright (C) 2017 Team for NIT's Students </pre>
+        </ons-list>
+    </ons-list>
+      <script>
+            window.fn.loadLink = function (url) {
+                window.open(url, '_blank');
+            };
+      </script>
   </ons-page>
 </template>
     
