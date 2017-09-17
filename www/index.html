@@ -18,18 +18,16 @@ and open the template in the editor.
       <ons-splitter-content>
         <ons-page id="tabbar-page">
           <ons-toolbar>
-            <div class="center">Home</div>
+            <div class="center">New Notifications</div>
             <div class="left">
               <ons-toolbar-button onclick="fn.toggleMenu()">
                 <ons-icon icon="ion-navicon, material:md-menu"></ons-icon>
               </ons-toolbar-button>
             </div>
           </ons-toolbar>
-          <ons-tabbar id="appTabbar" position="auto">
-            <ons-tab label="Home" icon="ion-home" page="home.html" active></ons-tab>
-            <ons-tab label="Forms" icon="ion-edit" page="forms.html"></ons-tab>
-            <ons-tab label="Animations" icon="ion-film-marker" page="animations.html"></ons-tab>
-          </ons-tabbar>
+          <ons-pull-hook id="pull-hook">
+            Pull to refresh
+          </ons-pull-hook>
         </ons-page>
       </ons-splitter-content>
     </ons-splitter>
@@ -1126,6 +1124,32 @@ and open the template in the editor.
 </style>
 <script>
     window.fn = {};
+
+ons.ready(function() {
+  var pullHook = document.getElementById('pull-hook');
+
+  pullHook.addEventListener('changestate', function(event) {
+    var message = '';
+
+    switch (event.state) {
+      case 'initial':
+        message = 'Pull to refresh';
+        break;
+      case 'preaction':
+        message = 'Release';
+        break;
+      case 'action':
+        message = 'Loading...';
+        break;
+    }
+
+    pullHook.innerHTML = message;
+  });
+
+  pullHook.onAction = function(done) {
+    setTimeout(done, 1000);
+  };
+});
 
 window.fn.toggleMenu = function () {
   document.getElementById('appSplitter').left.toggle();
