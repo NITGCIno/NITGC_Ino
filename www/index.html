@@ -129,7 +129,7 @@ and open the template in the editor.
     </ons-toolbar>
       <ons-list>
     <ons-list-item modifier="station" onclick="fn.load('station.html')" tappable>
-        最寄駅の設定
+        駅の設定
     </ons-list-item>
       </ons-list>
   </ons-page>
@@ -207,6 +207,16 @@ and open the template in the editor.
 </template>
     
     <template id="station.html">
+        <ons-toolbar>
+            <div class="left">
+            <ons-toolbar-button onclick="fn.open()">
+                <ons-icon icon="md-chevron-left"></ons-icon>
+            </ons-toolbar-button>
+            </div>
+            <div class="center">
+                駅の設定
+            </div>
+        </ons-toolbar>
         <ons-page>
             <p style="text-align: center; margin-top: 10px;">
                 <ons-search-input placeholder="Search"></ons-search-input>
