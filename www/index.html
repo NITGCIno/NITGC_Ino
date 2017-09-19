@@ -134,7 +134,7 @@ and open the template in the editor.
         </div>
         駅の設定
     </ons-list-item>
-    <ons-list-item modifier="station" onclick="fn.load('.html')" tappable>
+    <ons-list-item modifier="station" onclick="fn.load('setnotification.html')" tappable>
         <div class="left">
             <ons-icon icon="fa-bell, material:md-bell"></ons-icon>
         </div>
@@ -232,9 +232,13 @@ and open the template in the editor.
                 <ons-search-input placeholder="Search"></ons-search-input>
             </p>
             </div>
-            <div class="right">
-            <ons-button>Save</ons-button>
-            </div>
+            <ons-bottom-toolbar transparent>
+                <div class="center">
+                    <ons-button onclick="fn.load('settings.html')">
+                        Save
+                    </ons-button>
+                </div>
+            </ons-bottom-toolbar>
             <script>
                 //駅名をUTF-8でエンコード
                 //駅名から駅コードを取得する
@@ -244,7 +248,7 @@ and open the template in the editor.
         </ons-page>
     </template>
 
-    <template id="station.html">
+    <template id="setnotification.html">
         <ons-page>
         <ons-toolbar>
             <div class="left">
@@ -253,22 +257,22 @@ and open the template in the editor.
             </ons-toolbar-button>
             </div>
             <div class="center">
-                駅の設定
+                通知設定
             </div>
         </ons-toolbar>
             <div class="center">
-            <p style="text-align: center; margin-top: 10px;">
-                <ons-search-input placeholder="Search"></ons-search-input>
-            </p>
+                
             </div>
-            <div class="right">
-            <ons-button>Save</ons-button>
-            </div>
+            
+            <ons-bottom-toolbar transparent>
+                <div class="center">
+                    <ons-button onclick="fn.load('settings.html')">
+                        Save
+                    </ons-button>
+                </div>
+            </ons-bottom-toolbar>
             <script>
-                //駅名をUTF-8でエンコード
-                //駅名から駅コードを取得する
-                //https://api.apigw.smt.docomo.ne.jp/ekispertCorp/v1/station?APIKEY=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&Name=22828
-                //保存ボタンで駅コードをlocalStorage APIで書き出し(タグ=homeEkicode)
+                //保存ボタンで時刻をlocalStorage APIで書き出し(タグ=timestart,timeend)
             </script>
         </ons-page>
     </template>
